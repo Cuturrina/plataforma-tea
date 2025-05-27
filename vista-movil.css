@@ -172,4 +172,108 @@ footer p {
     font-size: small;
 }
 
+/* --- ESTILOS ESPECÍFICOS DEL FORO PARA VISTA MÓVIL (en vista-movil.css) --- */
+
+/* Ajustes generales del contenedor para móvil para evitar desbordamientos */
+main .container {
+    padding: 15px; 
+    margin: 0 10px 20px 10px; 
+    box-sizing: border-box; 
+    width: auto; 
+    max-width: 100%; 
+}
+
+/* Títulos */
+main h2, main h3 {
+    font-size: 1.5em; 
+    padding-bottom: 8px; 
+    margin-bottom: 15px; 
+    margin-top: 20px; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+}
+
+/* Descripción de Categoría: Asegúrate de que se ajuste correctamente */
+.category-description {
+    font-size: 0.9em; 
+    padding-left: 8px; 
+    margin-bottom: 15px; 
+    text-align: left; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Elementos de Categoría: Ajusta el padding y asegúrate de que el contenido quepa */
+.category-item {
+    padding: 12px 15px; /* Menos padding */
+    margin-bottom: 12px;
+}
+
+.category-item h3 a {
+    font-size: 1.2em; /* Título más pequeño en los elementos de categoría */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Botones: Hazlos verdaderamente responsivos y centrados */
+.new-topic-button .btn,
+.reply-section .btn,
+.form-buttons-row .btn,
+.form-buttons-row .btn-secondary {
+    display: block; 
+    width: calc(100% - 20px); 
+    margin: 10px auto; 
+    padding: 10px 15px; 
+    font-size: 1em; 
+}
+
+/* Asegura que el botón secundario también se vea bien */
+.form-buttons-row .btn-secondary {
+    margin-top: 5px; 
+}
+
+/* Elementos de formulario (para crear-tema-foro.php, etc.): */
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 20px); 
+    padding: 8px 10px; 
+    font-size: 1em;
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
+}
+
+/* Textarea específicamente */
+textarea {
+    min-height: 100px; 
+}
+
+/* Cajas de mensaje: asegúrate de que se ajusten */
+.message {
+    padding: 8px 10px; 
+    margin-bottom: 15px;
+    font-size: 0.9em; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Elementos de lista de publicaciones: asegúrate de que el contenido quepa */
+.post-item, .topic-item {
+    padding: 12px 15px; 
+    margin-bottom: 12px;
+}
+
+.post-body p {
+    font-size: 0.9em; 
+
+}
+
+.new-topic-button {
+    display: grid;
+   grid-template-columns: 1fr;
+    width: calc(100% - 20px);
+    margin: 10px auto; 
+    padding: 10px 15px;
+    font-size: 1em; 
+}
 
