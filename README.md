@@ -1,3 +1,2 @@
 # plataforma-tea
-Este es mi TFG
-y esto es un cambio 
+Este es mi TFG y explicaremos como montar el proyecto
