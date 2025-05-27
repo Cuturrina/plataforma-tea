@@ -41,7 +41,7 @@
 
     <button 
         id="toggle-view-button" 
-        style="position: fixed; top: 15px; right: 20px; padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000;">
+        style="position: fixed; top: 15px; right: 20px; padding: 10px 15px; background-color:rgb(11, 142, 230); color: white; border: none; border-radius: 5px; cursor: pointer; z-index: 1000;">
         Vista Móvil 📱
     </button>
 

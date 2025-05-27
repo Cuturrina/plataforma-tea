@@ -1,5 +1,4 @@
-<?php
-session_start();
+<?php session_start();
 
 $response = [
     'old_input' => $_POST,
@@ -28,7 +27,7 @@ $email = htmlspecialchars($_POST['email']);
 $mensaje = htmlspecialchars($_POST['mensaje']);
 
 // Configuración del email
-$destinatario = "tucorreo@ejemplo.com"; // <-- CAMBIA AQUÍ
+$destinatario = "infoplataformatea@gmail.com"; // <-- CAMBIA AQUÍ
 $asunto = "Nuevo mensaje desde la Plataforma Infantil";
 $cuerpo = "Nombre: $nombre\nEmail: $email\n\nMensaje:\n$mensaje";
 $headers = "From: $email";
