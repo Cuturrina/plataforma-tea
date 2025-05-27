@@ -643,8 +643,26 @@ footer p {
         visibility: visible;
         transform: translateY(0);
     }
-}
 
+    .recent-topics li {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    .topic-category {
+        margin-left: 0;
+        margin-top: 5px; 
+    }
+    .topic-header h2 {
+        font-size: 1.5em; 
+    }
+    .post-author {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .post-date {
+        margin-top: 3px;
+    }
+}
 
 /* Para tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -817,5 +835,304 @@ footer p {
     color: white; 
     flex-grow: 1; 
 }
+
+/* --- ESTILOS ESPECÍFICOS DEL FORO --- */
+
+/* Títulos del Foro */
+main h2, main h3 { /* Aplicar a h2 y h3 dentro del main content */
+    color: #4934aa; /* Tu color principal para títulos */
+    text-align: center; /* Mantener centrado si es tu estilo */
+    border-bottom: 2px solid #d0e0ff; /* Un borde sutil para separación */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px; /* Consistencia con tus h2/h3 existentes */
+}
+
+/* Contenedores principales del foro */
+.forum-categories, .recent-topics, .topic-list, .posts-list {
+    margin-bottom: 30px;
+}
+
+/* Elementos de Categoría */
+.category-item {
+    background-color: #f5f0ff; /* Un lila muy claro, acorde a tu paleta */
+    border: 1px solid #dcd0ff; /* Un borde sutil de lila */
+    border-radius: 10px; /* Mantener tus bordes redondeados */
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    border-bottom: none; /* Eliminar el borde inferior extra si lo hereda */
+    padding-bottom: 0;
+}
+
+.category-item h3 a {
+    color: #4934aa; /* Tu color principal para enlaces de títulos */
+    text-decoration: none;
+    font-size: 1.4em;
+    font-weight: bold; /* Mantener la negrita de tus enlaces */
+}
+
+.category-item h3 a:hover {
+    text-decoration: underline;
+}
+
+.category-item p {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.category-meta {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.category-description {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left: 3px solid #a98fff; /* Un color de tu paleta para la barra */
+    text-align: left; /* Generalmente las descripciones son mejor alineadas a la izquierda */
+}
+
+
+/* Lista de Temas Recientes */
+.recent-topics ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-topics li {
+    background-color: #ffffff; /* Fondo blanco */
+    border: 1px solid #e0e0e0; /* Borde suave */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.95em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sutil sombra */
+}
+
+.recent-topics li a {
+    color: #4934aa; /* Tu color principal para enlaces */
+    text-decoration: none;
+    font-weight: bold; /* Mantener la negrita */
+    margin-right: 5px;
+}
+
+.recent-topics li a:hover {
+    text-decoration: underline;
+}
+
+.topic-category {
+    background-color: #d0e0ff; /* Un color suave para la etiqueta de categoría */
+    color: #4934aa; /* Texto del color de tu paleta */
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    margin-left: 10px; /* Espacio después del título */
+    white-space: nowrap; /* Evita que el nombre de la categoría se rompa */
+}
+
+/* Lista de Temas (para category.php) */
+.topic-list {
+    margin-top: 20px;
+}
+
+.topic-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.topic-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.topic-item h3 a {
+    color: #4934aa; /* Tu color principal */
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.topic-item h3 a:hover {
+    text-decoration: underline;
+}
+
+.topic-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Contenido del Tema (para topic.php) */
+.topic-header {
+    background-color: #f8f0ff; /* Un lila muy claro para el encabezado del tema */
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 5px solid #a98fff; /* Tu color de header como borde izquierdo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.topic-header h2 {
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: 1.8em;
+    text-align: left; /* El título del tema suele ir a la izquierda */
+}
+
+.topic-info {
+    font-size: 0.9em;
+    color: #555;
+    text-align: left;
+}
+
+.posts-list {
+    margin-top: 20px;
+}
+
+.post-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.post-item.original-post {
+    background-color: #fefeff; /* Casi blanco para el post original */
+    border-left: 5px solid #a98fff; /* Tu color principal para el post original */
+}
+
+.post-author {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em; /* Un poco más grande para el autor */
+}
+
+.post-date {
+    font-weight: normal;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.post-body {
+    padding-top: 10px;
+}
+
+.post-body p {
+    margin: 0 0 10px;
+    white-space: pre-wrap; /* Mantiene saltos de línea */
+    word-wrap: break-word; /* Rompe palabras largas */
+}
+
+/* Botones de acción del foro */
+.new-topic-button, .reply-section {
+    margin-top: 25px;
+    text-align: center;
+}
+
+/* Mensajes de éxito/error */
+.message {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Mantener tus bordes redondeados */
+    font-weight: bold; /* Hacer el texto más notable */
+    text-align: center;
+}
+
+.message span {
+    display: block;
+}
+
+.message.error {
+    background-color: #ffe0e0; /* Rojo claro */
+    color: #cc0000; /* Rojo oscuro */
+    border: 1px solid #ffaaaa;
+}
+
+.message.success {
+    background-color: #e0ffe0; /* Verde claro */
+    color: #008000; /* Verde oscuro */
+    border: 1px solid #aaffaa;
+}
+
+/* Mensaje para iniciar sesión */
+.login-prompt {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fffacd; /* Amarillo suave para avisos */
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    color: #856404;
+}
+
+/* Estilos para el formulario de crear/responder */
+.form-group label {
+    color: #4934aa; /* Color de tus títulos */
+}
+
+textarea {
+    resize: vertical; /* Permitir redimensionamiento vertical */
+    min-height: 120px; /* Altura mínima para el área de texto */
+}
+
+/* Ajuste para el botón de "Crear Nuevo Tema" o "Publicar Respuesta" */
+.btn {
+    background-color: #a98fff; /* Tu color de botón principal */
+    color: white;
+    padding: 12px 25px; /* Un poco más de padding */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em; /* Fuente un poco más grande */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #9672f3; /* Tu color de botón en hover */
+}
+
+.btn-secondary {
+    background-color: #808080; /* Gris para botones secundarios */
+}
+
+.btn-secondary:hover {
+    background-color: #6a6a6a;
+}
+
 
 
