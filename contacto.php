@@ -1,3 +1,8 @@
+<?php
+session_start();
+$response = $_SESSION['response'] ?? ['old_input' => [], 'error' => '', 'success' => ''];
+unset($_SESSION['response']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,7 +26,6 @@
                 <li><a href="contacto.php"><i class="fas fa-envelope"></i> Escríbenos</a></li>
                 <li><a href="sugerencias.php"><i class="fas fa-lightbulb"></i> Buzón de Sugerencias</a></li>
                 <li><a href="sobre-el-proyecto.php"><i class="fas fa-info-circle"></i> Sobre el Proyecto</a></li>
-                <?php session_start(); ?>
                 <?php if (isset($_SESSION['username'])): ?>
                 <li class="dropdown">
                     <div class="dropdown-toggle" id="user-menu">
@@ -46,37 +50,43 @@
 
     <div id="simulacion-movil-overlay" class="simulacion-movil">
         <div class="marco-movil">
-          <div class="pantalla-movil">
-              <iframe id="iframe-movil" class="iframe-movil" src="vista-movil.php"></iframe>
-          </div>
-          <button id="cerrar-simulador-iframe-boton">Cerrar</button>
+            <div class="pantalla-movil">
+                <iframe id="iframe-movil" class="iframe-movil" src="vista-movil.php"></iframe>
+            </div>
+            <button id="cerrar-simulador-iframe-boton">Cerrar</button>
         </div>
     </div>
 
     <div class="container" id="contacto">
         <h2>Contacto</h2>
         <p>Si tienes alguna pregunta, sugerencia o necesitas más información, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.</p>
-        
+
+        <!-- Mensajes de error o éxito -->
+        <?php if ($response['error']): ?>
+            <div style="color: red; font-weight: bold;"><?= $response['error'] ?></div>
+        <?php elseif ($response['success']): ?>
+            <div style="color: green; font-weight: bold;"><?= $response['success'] ?></div>
+        <?php endif; ?>
+
         <form action="enviar_contacto.php" method="POST" id="formContacto"> 
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<?= isset($response['old_input']['nombre']) ? htmlspecialchars($response['old_input']['nombre']) : '' ?>" required oninvalid="this.setCustomValidity('Parece que falta tu nombre. ¿Puedes escribirlo, por favor?')" oninput="this.setCustomValidity('')">
+                <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($response['old_input']['nombre'] ?? '') ?>" required oninvalid="this.setCustomValidity('Parece que falta tu nombre. ¿Puedes escribirlo, por favor?')" oninput="this.setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?= isset($response['old_input']['email']) ? htmlspecialchars($response['old_input']['email']) : '' ?>" required oninvalid="this.setCustomValidity('Necesitamos tu dirección de email para poder contactarte. ¿Puedes escribirla?')" oninput="this.setCustomValidity('')">
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($response['old_input']['email'] ?? '') ?>" required oninvalid="this.setCustomValidity('Necesitamos tu dirección de email para poder contactarte. ¿Puedes escribirla?')" oninput="this.setCustomValidity('')">
             </div>
 
             <div class="form-group">
                 <label for="mensaje">Mensaje:</label>
-              <textarea id="mensaje" name="mensaje" rows="4" required oninvalid="this.setCustomValidity('Tu mensaje está vacío. ¿Qué nos quieres contar?')" oninput="this.setCustomValidity('')"><?= isset($response['old_input']['mensaje']) ? htmlspecialchars($response['old_input']['mensaje']) : '' ?></textarea>
+                <textarea id="mensaje" name="mensaje" rows="4" required oninvalid="this.setCustomValidity('Tu mensaje está vacío. ¿Qué nos quieres contar?')" oninput="this.setCustomValidity('')"><?= htmlspecialchars($response['old_input']['mensaje'] ?? '') ?></textarea>
             </div>
 
             <button type="submit">Enviar</button>
         </form>
     </div>
-
 
     <footer>
         <p>&copy; Ayuda para Niños con Autismo. Todos los derechos reservados.</p>
