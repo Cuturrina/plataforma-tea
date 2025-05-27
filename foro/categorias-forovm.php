@@ -84,7 +84,7 @@ $conn->close();
                     <li><a href="../contactovm.php"><i class="fas fa-envelope"></i> Escríbenos</a></li>
                     <li><a href="../sugerenciasvm.php"><i class="fas fa-lightbulb"></i> Buzón de Sugerencias</a></li>
                     <li><a href="../proyectovm.php"><i class="fas fa-info-circle"></i> Sobre el Proyecto</a></li>
-                    <li><a href="#" onclick="toggleMenuSimulador();"><i class="fas fa-times-circle"></i> Cerrar Menú</a></li>
+                    <li><a href="../#" onclick="toggleMenuSimulador();"><i class="fas fa-times-circle"></i> Cerrar Menú</a></li>
                 </ul>
             </div>
         </div>
@@ -99,6 +99,7 @@ $conn->close();
             <div class="new-topic-button">
                 <?php if (isset($_SESSION['username'])): ?>
                     <a href="crear-tema-foro.php?category_id=<?= $category_id ?>" class="btn">Crear Nuevo Tema en esta Categoría</a>
+                    <a href="../forovm.php" class="btn"><i class="fas fa-arrow-left"></i> Volver al Foro</a>
                 <?php else: ?>
                     <p class="login-prompt">Por favor, <a href="../login.php">inicia sesión</a> para crear nuevos temas.</p>
                 <?php endif; ?>

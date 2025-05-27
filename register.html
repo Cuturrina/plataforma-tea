@@ -8,40 +8,46 @@
 </head>
 
 <body>
-<section id="register-page" class="page-section">
-    <h2>Crear Cuenta</h2>
-    <form method="POST" action="">
-        <div class="form-group">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required autocomplete="username">
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-        </div>
-
-        <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required autocomplete="new-password">
-        </div>
-
-        <?php if (!empty($message)): ?>
-            <div id="registerMessage" class="message">
-                <?= $message ?>
+    <section id="register-page" class="page-section">
+        <h2>Crear Cuenta</h2>
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required autocomplete="username">
             </div>
-        <?php endif; ?>
 
-        <div class="form-buttons-row">
-            <button type="submit" class="btn">Registrarse</button>
-        </div>
-    </form>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
 
-    <p style="text-align: center; margin-top: 20px;">
-        ¿Ya tienes cuenta? <a href="login.html" class="nav-link">Inicia sesión aquí</a>
-    </p>
-</section>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required autocomplete="new-password">
+            </div>
 
-<script src="script.js"></script>
+            <div class="form-buttons-row">
+                <button type="submit" class="btn">Registrarse</button>
+            </div>
+
+            <div class="social-login">
+                <p style="text-align: center;">O regístrate con:</p>
+                <button id="googleSignInBtn" type="button" class="btn btn-google">
+                    <i class="fab fa-google"></i> Google
+                </button>
+            </div>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px;">
+            ¿Ya tienes cuenta? <a href="login.html" class="nav-link">Inicia sesión aquí</a>
+        </p>
+    </section>
+
+    <!-- Incluir Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+    <!-- Enlace a archivo Javascript -->
+    <script src="script.js"></script>
 </body>
 </html>

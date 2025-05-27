@@ -1,9 +1,9 @@
 <?php session_start();
-include("conexion.php"); // Asegúrate de que este archivo exista y establezca $conn
+include("../conexion.php"); // Asegúrate de que este archivo exista y establezca $conn
 
 // Redirigir si el usuario no está logueado
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -71,13 +71,13 @@ if ($redirect_to_topic && $topic_id_to_redirect) {
     // Puedes añadir el mensaje a la URL o a una sesión para mostrarlo en temas-foro.php
     $_SESSION['post_message'] = $message;
     // LÍNEA CORREGIDA: topic.php a temas-foro.php
-    header("Location: temas-foro.php?id=" . $topic_id_to_redirect);
+    header("Location: temas-forovm.php?id=" . $topic_id_to_redirect);
     exit();
 } else {
     // Si hubo un error que impidió la redirección al tema, podrías redirigir al foro principal
     // O mostrar el mensaje de error directamente aquí
     $_SESSION['post_message'] = $message; // Guarda el mensaje en la sesión
-    header("Location: ../foro.php");
+    header("Location: ../forovm.php");
     exit();
 }
 ?>

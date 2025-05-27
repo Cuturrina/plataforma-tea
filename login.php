@@ -65,34 +65,45 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-<section id="login-page" class="page-section">
-    <h2>Iniciar Sesión</h2>
+    <section id="login-page" class="page-section">
+        <h2>Iniciar Sesión</h2>
 
-    <?php if (!empty($error)): ?>
-        <div class="message error"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
+        <?php if (!empty($message)): ?>
+            <div class="message"><?= $message ?></div>
+        <?php endif; ?>
 
-    <form id="loginForm" method="POST" action="">
-        <div class="form-group">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
+        <form id="loginForm" method="POST" action="">
+            <div class="form-group">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-buttons-row">
+                <button type="submit" id="loginBtn">Iniciar Sesión</button>
+            </div>
+        </form>
+
+        <p style="text-align: center; margin-top: 20px;">
+            ¿No tienes cuenta? <a href="register.php">Regístrate aquí</a>
+        </p>
+
+        <div class="social-login">
+            <button id="googleSignInBtn" class="btn btn-google">
+                <i class="fab fa-google"></i> Google
+            </button>
         </div>
-        <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
+    </section>
+    
+    <!-- Incluir Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
 
-        <div class="form-buttons-row">
-            <button type="submit" id="loginBtn">Iniciar Sesión</button>
-        </div>
-    </form>
-
-    <p style="text-align: center; margin-top: 20px;">
-        ¿No tienes cuenta? <a href="register.php">Regístrate aquí</a>
-    </p>
-</section>
-
-
+    <!-- Enlace a archivo Javascript -->
     <script src="script.js"></script>
 </body>
 </html>
+

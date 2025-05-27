@@ -103,7 +103,7 @@ $conn->close();
                     <li><a href="../contactovm.php"><i class="fas fa-envelope"></i> Escríbenos</a></li>
                     <li><a href="../sugerenciasvm.php"><i class="fas fa-lightbulb"></i> Buzón de Sugerencias</a></li>
                     <li><a href="../proyectovm.php"><i class="fas fa-info-circle"></i> Sobre el Proyecto</a></li>
-                    <li><a href="#" onclick="toggleMenuSimulador();"><i class="fas fa-times-circle"></i> Cerrar Menú</a></li>
+                    <li><a href="../#" onclick="toggleMenuSimulador();"><i class="fas fa-times-circle"></i> Cerrar Menú</a></li>
                 </ul>
             </div>
         </div>

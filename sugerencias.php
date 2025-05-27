@@ -2,7 +2,7 @@
 session_start();
 
 // Email del administrador que recibirá las sugerencias
-$admin_email = "info@plataformatea.com"; // ¡IMPORTANTE! Cambia esto por tu correo electrónico de administración
+$admin_email = "infoplataformatea@gmail.com"; // ¡IMPORTANTE! Cambia esto por tu correo electrónico de administración
 
 $mensaje_enviado = false;
 $errores = [];
@@ -127,7 +127,6 @@ if (isset($_SESSION['form_response'])) {
     <div class="container" id="sugerencias">
         <h2>Buzón de Sugerencias</h2>
         <p>Si tienes alguna sugerencia para mejorar nuestra plataforma o añadir contenido, no dudes en compartirla con nosotros. ¡Tu opinión es muy importante!</p>
-
 
         <?php
         if (!empty($response)) {

@@ -1,4 +1,75 @@
-<?php session_start(); ?>
+<?php session_start();
+
+// Email del administrador que recibirá las sugerencias
+$admin_email = "infoplataformatea@gmail.com"; // ¡IMPORTANTE! Cambia esto por tu correo electrónico de administración
+
+$mensaje_enviado = false;
+$errores = [];
+$old_input = [
+    'nombre' => '',
+    'sugerencia' => ''
+];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recogemos y saneamos los datos
+    $nombre = isset($_POST['nombre']) ? htmlspecialchars(trim($_POST['nombre'])) : "Anónimo";
+    $sugerencia = isset($_POST['sugerencia']) ? htmlspecialchars(trim($_POST['sugerencia'])) : ""; 
+
+    $old_input['nombre'] = $nombre;
+    $old_input['sugerencia'] = $sugerencia;
+
+    if (empty($sugerencia)) {
+        $errores[] = "Parece que olvidaste escribir tu sugerencia. ¿Puedes contarnos algo, por favor?";
+    } elseif (strlen($sugerencia) < 5) {
+        $errores[] = "Tu sugerencia es un poco corta. ¿Puedes añadir más detalles para entenderla mejor?";
+    }
+
+    if (empty($errores)) {
+        // Preparamos el asunto y cuerpo del email
+        $asunto = "Nueva sugerencia desde la web";
+        $cuerpo = "Has recibido una nueva sugerencia.\n\n";
+        $cuerpo .= "Nombre: $nombre\n";
+        $cuerpo .= "Sugerencia:\n$sugerencia\n";
+
+        // Headers para indicar que es texto plano y de parte de quien envía
+        $headers = "From: no-reply@tuweb.com\r\n";
+        $headers .= "Reply-To: no-reply@tuweb.com\r\n"; // Aquí pones el email donde quieres recibir las respuestas
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        // Enviamos el correo
+        if (mail($admin_email, $asunto, $cuerpo, $headers)) {
+            $_SESSION['form_response'] = [
+                'type' => 'success',
+                'message' => '¡Gracias por tu sugerencia! La hemos recibido correctamente.'
+            ];
+            // Redirigir para evitar reenvío del formulario
+            header("Location: sugerencias.php");
+            exit();
+        } else {
+            $errores[] = 'Lo sentimos, hubo un problema al enviar tu sugerencia. Por favor, inténtalo de nuevo más tarde.';
+        }
+    }
+    // Si hay errores, se guardan en la sesión para mostrarlos después de la redirección
+    $_SESSION['form_response'] = [
+        'type' => 'error',
+        'messages' => $errores,
+        'old_input' => $old_input
+    ];
+    header("Location: sugerencias.php");
+    exit();
+}
+
+// Recuperar mensajes de la sesión si existen
+$response = [];
+if (isset($_SESSION['form_response'])) {
+    $response = $_SESSION['form_response'];
+    unset($_SESSION['form_response']); // Limpiar la sesión
+    if ($response['type'] === 'error' && isset($response['old_input'])) {
+        $old_input = $response['old_input'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

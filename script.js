@@ -394,5 +394,75 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// Configuración de Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCxB95ZAQNdrft3GxdaDLijJlhG1ZuBu38",
+  authDomain: "plataforma-tea.firebaseapp.com",
+  projectId: "plataforma-tea",
+  storageBucket: "plataforma-tea.firebasestorage.app",
+  messagingSenderId: "588898892897",
+  appId: "1:588898892897:web:a3ee9c921216ef9f163e20",
+  measurementId: "G-C4JBRFKZ7F"
+};
+
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Obtener instancia de Firebase Auth
+const auth = firebase.auth();
+
+// Función para manejar el inicio de sesión con Google
+document.getElementById('googleSignInBtn').addEventListener('click', function() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then(result => {
+        const user = result.user;
+        console.log('Usuario logueado con Google: ', user);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+    }).catch(error => {
+        console.error('Error al iniciar sesión con Google:', error.message);
+    });
+});
+
+// Función para manejar el inicio de sesión con Facebook
+document.getElementById('facebookSignInBtn').addEventListener('click', function() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth.signInWithPopup(provider).then(result => {
+        const user = result.user;
+        console.log('Usuario logueado con Facebook: ', user);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+    }).catch(error => {
+        console.error('Error al iniciar sesión con Facebook:', error.message);
+    });
+});
+
+// Función para manejar el inicio de sesión con Microsoft
+document.getElementById('microsoftSignInBtn').addEventListener('click', function() {
+    const provider = new firebase.auth.OAuthProvider('microsoft.com');
+    auth.signInWithPopup(provider).then(result => {
+        const user = result.user;
+        console.log('Usuario logueado con Microsoft: ', user);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+    }).catch(error => {
+        console.error('Error al iniciar sesión con Microsoft:', error.message);
+    });
+});
+
+// Función para registrar al usuario en tu base de datos PHP
+function registerUser(email, username) {
+    // Hacer una petición AJAX para registrar al usuario en la base de datos (PHP)
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "register.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("email=" + email + "&username=" + username + "&password=" + "firebaseAuthPassword");
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            alert('Usuario registrado con éxito');
+            window.location.href = "login.php";  // Redirigir al login después de registrarse
+        } else {
+            console.error('Error al registrar en la base de datos PHP');
+        }
+    };
+}
 
 

@@ -122,6 +122,7 @@ $conn->close();
             <div class="new-topic-button">
                 <?php if (isset($_SESSION['username'])): ?>
                     <a href="crear-tema-foro.php?category_id=<?= $category_id ?>" class="btn">Crear Nuevo Tema en esta Categoría</a>
+                    <a href="../foro.php" class="btn"><i class="fas fa-arrow-left"></i> Volver al Foro</a>
                 <?php else: ?>
                     <p class="login-prompt">Por favor, <a href="login.php">inicia sesión</a> para crear nuevos temas.</p>
                 <?php endif; ?>
