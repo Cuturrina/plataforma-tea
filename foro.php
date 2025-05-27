@@ -55,7 +55,7 @@
 
     <div class="container">
     <a href="http://localhost/phpBB3/index.php">
-        <img src="img/obra.gif" alt="En construcción">
+        <img src="img/foro.png" alt="En construcción">
     </a>
 </div>
 
