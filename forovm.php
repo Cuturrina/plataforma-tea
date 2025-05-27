@@ -28,15 +28,13 @@
         </div>
     </div>
 
+    <div class="container">
+    <a href="http://localhost/phpBB3/index.php">
+        <img src="img/foro.png" alt="En construcción">
+    </a>
+</div>
 
-
-    <div class=container>
-        <img src="img/obra.gif" alt="En construccion">
-    </div>
-
-
-
-    <footer>
+<footer>
         <p>&copy; Ayuda para Niños con Autismo. Todos los derechos reservados.</p>
         <div>
             <a href="politica-privacidad.php">Política de Privacidad</a>
