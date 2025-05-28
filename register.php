@@ -93,20 +93,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
 
-        <div class="social-login">
-            <button id="googleSignInBtn" class="btn btn-google">
-                <i class="fab fa-google"></i> Google
-            </button>
-        </div>
-
         <p style="text-align: center; margin-top: 20px;">
             ¿Ya tienes cuenta? <a href="login.php" class="nav-link">Inicia sesión aquí</a>
         </p>
     </section>
-
-    <!-- Incluir Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
 
     <!-- Enlace a archivo Javascript -->
     <script src="script.js"></script>

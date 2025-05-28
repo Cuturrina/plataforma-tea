@@ -90,17 +90,7 @@ if (isset($_SESSION['username'])) {
         <p style="text-align: center; margin-top: 20px;">
             ¿No tienes cuenta? <a href="register.php">Regístrate aquí</a>
         </p>
-
-        <div class="social-login">
-            <button id="googleSignInBtn" class="btn btn-google">
-                <i class="fab fa-google"></i> Google
-            </button>
-        </div>
     </section>
-    
-    <!-- Incluir Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
 
     <!-- Enlace a archivo Javascript -->
     <script src="script.js"></script>
