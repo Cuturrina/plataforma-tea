@@ -394,22 +394,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Función para registrar al usuario en tu base de datos PHP
-function registerUser(email, username) {
-    // Hacer una petición AJAX para registrar al usuario en la base de datos (PHP)
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "register.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("email=" + email + "&username=" + username + "&password=" + "firebaseAuthPassword");
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            alert('Usuario registrado con éxito');
-            window.location.href = "login.php";  // Redirigir al login después de registrarse
-        } else {
-            console.error('Error al registrar en la base de datos PHP');
-        }
-    };
-}
-
 
